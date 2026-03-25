@@ -1,0 +1,44 @@
+<div class="pcd rv">
+    <div class="pim">
+        @if(isset($image))
+            <img src="{{ $image }}" alt="{{ $name }}" loading="lazy" />
+        @elseif(isset($icon))
+            <i class="{{ $icon }}"></i>
+        @endif
+
+        @if(isset($badge))
+            <span class="pbdg {{ $badgeClass }}">{{ $badge }}</span>
+        @endif
+
+        <div class="pact">
+            <button class="pab"><i class="fas fa-eye"></i></button>
+        </div>
+    </div>
+    <div class="pinf">
+        <div class="pcat">{{ $category }}</div>
+        <h3>{{ $name }}</h3>
+        <div class="prat">
+            @php
+                $fullStars = floor($rating);
+                $hasHalfStar = ($rating - $fullStars) >= 0.5;
+            @endphp
+
+            @for($i = 0; $i < $fullStars; $i++)
+                <i class="fas fa-star"></i>
+            @endfor
+
+            @if($hasHalfStar)
+                <i class="fas fa-star-half-alt"></i>
+            @endif
+
+            @for($i = 0; $i < (5 - $fullStars - ($hasHalfStar ? 1 : 0)); $i++)
+                <i class="far fa-star"></i>
+            @endfor
+
+            <span>({{ $reviews }})</span>
+        </div>
+        <div class="pprow">
+            <div class="pprc">{{ $price }} @if(isset($oldPrice))<span class="old">{{ $oldPrice }}</span>@endif</div>
+        </div>
+    </div>
+</div>
