@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'NEX Gen - Complete Security Camera Solutions')
+@section('title', 'NEX GEN - Complete Security Camera Solutions')
 
 @section('content')
 
@@ -224,18 +224,18 @@
         </div>
         <div class="prgd">
             @include('partials.product-card', [
-                'image' => 'https://images.pexels.com/photos/27574914/pexels-photo-27574914.jpeg?auto=compress&cs=tinysrgb&w=400&lazy=load',
+                'image' => asset('images/camera/4.jpg.jpeg'),
                 'badge' => 'Hot',
                 'badgeClass' => 'pbh',
-                'category' => 'Indoor Camera',
-                'name' => '4K Dome Camera IR Night Vision',
+                'category' => 'Outdoor Camera',
+                'name' => 'Bullet Camera IR Night Vision',
                 'rating' => 4.5,
                 'reviews' => 128,
                 'price' => 'Rs 249',
                 'oldPrice' => 'Rs 329'
             ])
             @include('partials.product-card', [
-                'image' => 'https://images.unsplash.com/photo-1683821291931-068148564d8c?auto=format&fit=crop&w=370&q=80',
+                'image' => asset('images/camera/5.jpg.jpeg'),
                 'badge' => 'New',
                 'badgeClass' => 'pbn',
                 'category' => 'Outdoor Camera',
@@ -246,62 +246,62 @@
                 'oldPrice' => 'Rs 2,199'
             ])
             @include('partials.product-card', [
-                'image' => 'https://vikylin.com/wp-content/uploads/2025/01/PTZ-2504X-I2.jpg',
+                'image' => asset('images/camera/9.jpg.jpeg'),
                 'badge' => 'Sale',
                 'badgeClass' => 'pbsl',
-                'category' => 'PTZ Camera',
-                'name' => 'PTZ Pro 360 Pan-Tilt-Zoom 30x',
+                'category' => 'DVR System',
+                'name' => 'HD Digital Video Recorder 8-Channel',
                 'rating' => 4,
                 'reviews' => 89,
                 'price' => 'Rs 749',
                 'oldPrice' => 'Rs 999'
             ])
             @include('partials.product-card', [
-                'icon' => 'fas fa-server',
+                'image' => asset('images/camera/12.jpg.jpeg'),
                 'category' => 'NVR System',
-                'name' => '16-Channel NVR 8TB HDD Storage',
+                'name' => 'HD Digital Video Recorder 16-Channel',
                 'rating' => 4.5,
                 'reviews' => 167,
                 'price' => 'Rs 1,499',
                 'oldPrice' => 'Rs 2,500'
             ])
             @include('partials.product-card', [
-                'icon' => 'fas fa-wifi',
+                'image' => asset('images/camera/6.jpg.jpeg'),
                 'badge' => 'New',
                 'badgeClass' => 'pbn',
-                'category' => 'Wireless',
-                'name' => 'WiFi Smart Camera 2-Way Audio',
+                'category' => 'Networking',
+                'name' => 'PoE Network Switch 8-Port',
                 'rating' => 5,
                 'reviews' => 312,
                 'price' => 'Rs 129',
                 'oldPrice' => 'Rs 179'
             ])
             @include('partials.product-card', [
-                'icon' => 'fas fa-solar-panel',
+                'image' => asset('images/camera/7.jpg.jpeg'),
                 'badge' => 'Hot',
                 'badgeClass' => 'pbh',
-                'category' => 'Solar Camera',
-                'name' => 'Solar-Powered Outdoor Cam 4G',
+                'category' => 'DVR System',
+                'name' => 'HD Digital Video Recorder 4-Channel',
                 'rating' => 4,
                 'reviews' => 74,
                 'price' => 'Rs 2,499',
                 'oldPrice' => 'Rs 5,199'
             ])
             @include('partials.product-card', [
-                'icon' => 'fas fa-door-closed',
-                'category' => 'Doorbell',
-                'name' => 'Smart Video Doorbell Face Recognition',
+                'image' => asset('images/camera/8.jpg.jpeg'),
+                'category' => 'Networking',
+                'name' => 'PoE Switch 4-Port 100Mbps',
                 'rating' => 4.5,
                 'reviews' => 198,
                 'price' => 'Rs 299',
                 'oldPrice' => 'Rs 399'
             ])
             @include('partials.product-card', [
-                'icon' => 'fas fa-box-open',
+                'image' => asset('images/camera/10.jpg.jpeg'),
                 'badge' => 'Sale',
                 'badgeClass' => 'pbsl',
-                'category' => 'Complete Kit',
-                'name' => '8-Camera Security Kit + NVR Bundle',
+                'category' => 'DVR System',
+                'name' => 'HD Digital Video Recorder Pro',
                 'rating' => 5,
                 'reviews' => 445,
                 'price' => 'Rs 2,499',

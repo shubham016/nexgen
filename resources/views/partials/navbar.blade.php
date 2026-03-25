@@ -1,16 +1,16 @@
 <nav class="nb">
     <div class="cn ni">
         <a href="{{ url('/') }}" class="logo">
-            <img src="{{ asset('images/logo.png') }}" alt="NEX Gen" />
-            <span class="logo-name">NEX <b>Gen</b></span>
+            <img src="{{ asset('images/logo.png') }}" alt="NEX GEN" />
+            <span class="logo-name">NEX <b>GEN</b></span>
         </a>
         <div class="nmn">
-            <a href="{{ url('/#home') }}" class="active">Home</a>
-            <a href="{{ url('/#about') }}">About</a>
-            <a href="{{ url('/#services') }}">Services</a>
-            <a href="{{ url('/#products') }}">Products</a>
-            <a href="{{ url('/#testi') }}">Reviews</a>
-            <a href="{{ url('/#contact') }}">Contact</a>
+            <a href="/" class="active">Home</a>
+            <a href="/about">About</a>
+            <a href="/services">Services</a>
+            <a href="/products">Products</a>
+            <a href="/reviews">Reviews</a>
+            <a href="/contact">Contact</a>
         </div>
         <div class="nr">
             <div class="nsr"><i class="fas fa-search"></i></div>

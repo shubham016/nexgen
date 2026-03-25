@@ -2,28 +2,29 @@
     <div class="cn">
         <div class="fgd">
             <div class="fbd">
-                <a href="{{ url('/') }}" class="logo">
-                    <i class="fas fa-video"></i> NEX<span>Gen</span>
+                <a href="{{ url('/') }}" class="logo flogo">
+                    <i class="fas fa-video"></i>
+                    <span class="flogo-nex">NEX</span><span class="flogo-gen">Gen</span>
                 </a>
                 <p>
                     Your trusted partner for CCTV surveillance and security.
                     Protecting homes and businesses across Nepal since 2009.
                 </p>
                 <div class="fso">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.facebook.com/share/1FQfsVgtnF/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/NexGenBuildTech" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/nexgenbuildtech121/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@NexGenBuildTech" target="_blank"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
             <div class="fcl">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="{{ url('/') }}"><i class="fas fa-chevron-right"></i> Home</a></li>
-                    <li><a href="{{ url('/#about') }}"><i class="fas fa-chevron-right"></i> About</a></li>
-                    <li><a href="{{ url('/#services') }}"><i class="fas fa-chevron-right"></i> Services</a></li>
-                    <li><a href="{{ url('/#products') }}"><i class="fas fa-chevron-right"></i> Products</a></li>
-                    <li><a href="{{ url('/#contact') }}"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    <li><a href="/"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="/about"><i class="fas fa-chevron-right"></i> About</a></li>
+                    <li><a href="/services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="/products"><i class="fas fa-chevron-right"></i> Products</a></li>
+                    <li><a href="/contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
                 </ul>
             </div>
             <div class="fcl">

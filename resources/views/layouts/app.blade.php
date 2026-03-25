@@ -16,12 +16,12 @@
     <!-- Mobile Navigation -->
     <div class="mobn" id="mobn">
         <button class="clb" onclick="document.getElementById('mobn').classList.remove('open')">&times;</button>
-        <a href="{{ url('/#home') }}" onclick="document.getElementById('mobn').classList.remove('open')">Home</a>
-        <a href="{{ url('/#about') }}" onclick="document.getElementById('mobn').classList.remove('open')">About</a>
-        <a href="{{ url('/#services') }}" onclick="document.getElementById('mobn').classList.remove('open')">Services</a>
-        <a href="{{ url('/#products') }}" onclick="document.getElementById('mobn').classList.remove('open')">Products</a>
-        <a href="{{ url('/#testi') }}" onclick="document.getElementById('mobn').classList.remove('open')">Reviews</a>
-        <a href="{{ url('/#contact') }}" onclick="document.getElementById('mobn').classList.remove('open')">Contact</a>
+        <a href="/" onclick="document.getElementById('mobn').classList.remove('open')">Home</a>
+        <a href="/about" onclick="document.getElementById('mobn').classList.remove('open')">About</a>
+        <a href="/services" onclick="document.getElementById('mobn').classList.remove('open')">Services</a>
+        <a href="/products" onclick="document.getElementById('mobn').classList.remove('open')">Products</a>
+        <a href="/reviews" onclick="document.getElementById('mobn').classList.remove('open')">Reviews</a>
+        <a href="/contact" onclick="document.getElementById('mobn').classList.remove('open')">Contact</a>
     </div>
 
     @include('partials.topbar')

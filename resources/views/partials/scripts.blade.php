@@ -41,7 +41,13 @@
             var heroBottom = hero.offsetTop + hero.offsetHeight - nav.offsetHeight;
 
             if (scrollY < topbarH) {
+                nav.style.transition = 'none';
                 nav.classList.remove('nb-glass', 'nb-dark');
+                requestAnimationFrame(function() {
+                    requestAnimationFrame(function() {
+                        nav.style.transition = '';
+                    });
+                });
             } else if (scrollY < heroBottom) {
                 nav.classList.remove('nb-dark');
                 nav.classList.add('nb-glass');
@@ -74,12 +80,77 @@
         ob.observe(el);
     });
 
-    // Smooth Scroll for Anchor Links
-    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-        a.addEventListener("click", function (e) {
-            e.preventDefault();
-            var t = document.querySelector(a.getAttribute("href"));
-            if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Clean URL navigation — intercept nav links, scroll to section, update URL
+    var pathMap = {
+        '/': 'home',
+        '/about': 'about',
+        '/services': 'services',
+        '/products': 'products',
+        '/reviews': 'testi',
+        '/contact': 'contact'
+    };
+
+    var navLinks = document.querySelectorAll('.nmn a');
+
+    function setActive(href) {
+        navLinks.forEach(function (l) { l.classList.remove('active'); });
+        navLinks.forEach(function (l) {
+            if (l.getAttribute('href') === href) l.classList.add('active');
         });
+    }
+
+    document.querySelectorAll('a[href]').forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (pathMap.hasOwnProperty(href)) {
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                var sectionId = pathMap[href];
+                var target = document.getElementById(sectionId);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                history.pushState(null, '', href);
+                setActive(href);
+            });
+        }
     });
+
+    // On direct URL visit (e.g. /about), scroll to correct section and set active
+    (function () {
+        var path = window.location.pathname;
+        setActive(path === '/' ? '/' : path);
+        if (path !== '/' && pathMap[path]) {
+            var target = document.getElementById(pathMap[path]);
+            if (target) setTimeout(function () {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
+        }
+    }());
+
+    // Scrollspy — update active link and URL as user scrolls through sections
+    (function () {
+        var sectionToPath = {
+            'home':     '/',
+            'about':    '/about',
+            'services': '/services',
+            'products': '/products',
+            'testi':    '/reviews',
+            'contact':  '/contact'
+        };
+
+        var sections = Object.keys(sectionToPath).map(function (id) {
+            return document.getElementById(id);
+        }).filter(Boolean);
+
+        var scrollSpy = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    var id = entry.target.getAttribute('id');
+                    var path = sectionToPath[id];
+                    setActive(path);
+                    history.replaceState(null, '', path);
+                }
+            });
+        }, { threshold: 0.4 });
+
+        sections.forEach(function (s) { scrollSpy.observe(s); });
+    }());
 </script>

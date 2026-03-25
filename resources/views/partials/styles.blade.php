@@ -29,13 +29,13 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
     font-family: var(--fb);
     color: #333;
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 a {
@@ -199,14 +199,14 @@ ul {
 nav.nb {
     /* Default: solid blue at page top — hero is below navbar, not behind it */
     background: #048eef;
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 9999;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     box-shadow: 0 4px 20px rgba(4, 142, 239, 0.4);
-    transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease;
 }
 
 /* State 2: Liquid glass — while scrolling over the hero section */
@@ -296,7 +296,7 @@ nav.nb.nb-dark::after {
 }
 
 .logo-name b {
-    color: #A8D4FF;
+    color: #f96900;
     font-weight: 900;
 }
 
@@ -1318,6 +1318,7 @@ nav.nb.nb-dark::after {
     text-align: center;
     position: relative;
     overflow: hidden;
+    z-index: 0;
 }
 
 .cta::before {
@@ -1357,26 +1358,50 @@ nav.nb.nb-dark::after {
 /* Footer */
 footer {
     background: var(--nv);
-    padding: 80px 0 0;
+    padding: 55px 0 0;
 }
 
 .fgd {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
     gap: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .fbd .logo {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
+}
+
+.flogo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--fh);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.flogo i {
+    color: var(--bl);
+    font-size: 1.3rem;
+}
+
+.flogo-nex {
+    color: var(--bl);
+}
+
+.flogo-gen {
+    color: #ff6b2b;
 }
 
 .fbd > p {
     font-size: 0.88rem;
     color: var(--g4);
     line-height: 1.8;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 }
 
 .fso {

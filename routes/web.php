@@ -8,6 +8,13 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+// Clean URL routes for single-page sections
+Route::get('/about',    function () { return view('home'); });
+Route::get('/services', function () { return view('home'); });
+Route::get('/products', function () { return view('home'); });
+Route::get('/reviews',  function () { return view('home'); });
+Route::get('/contact',  function () { return view('home'); });
+
 // Dashboard route - redirects to admin dashboard
 Route::get('/dashboard', function () {
     return redirect()->route('admin.dashboard');
