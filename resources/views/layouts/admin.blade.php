@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>@yield('title', 'NEX Gen Admin - Inventory Dashboard')</title>
+    <title>@yield('title', 'NEXGEN Admin - Inventory Dashboard')</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('admin-assets/images/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('admin-assets/images/favicon-32x32.png') }}">

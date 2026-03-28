@@ -15,7 +15,7 @@ class AdminUserSeeder extends Seeder
     {
         // Create admin user
         User::updateOrCreate(
-            ['email' => 'info@nexgen.com'],
+            ['email' => 'info@nexgenbuildtech.com'],
             [
                 'name' => 'NEX Gen Admin',
                 'password' => Hash::make('Password@123'),

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'NEX GEN - Complete Security Camera Solutions')
+@section('title', 'NEXGEN - Complete Security Camera Solutions')
 
 @section('content')
 

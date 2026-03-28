@@ -4,7 +4,7 @@
             <div class="fbd">
                 <a href="{{ url('/') }}" class="logo flogo">
                     <i class="fas fa-video"></i>
-                    <span class="flogo-nex">NEX</span><span class="flogo-gen">Gen</span>
+                    <span><span class="flogo-nex">NEX</span><span class="flogo-gen">GEN</span></span>
                 </a>
                 <p>
                     Your trusted partner for CCTV surveillance and security.
@@ -12,8 +12,8 @@
                 </p>
                 <div class="fso">
                     <a href="https://www.facebook.com/share/1FQfsVgtnF/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com/NexGenBuildTech" target="_blank"><i class="fab fa-twitter"></i></a>
                     <a href="https://www.instagram.com/nexgenbuildtech121/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/nexgen-buildtech-7b36503b9/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://www.youtube.com/@NexGenBuildTech" target="_blank"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
@@ -42,13 +42,13 @@
                 <ul class="fcn">
                     <li><i class="fas fa-map-marker-alt"></i> Nepalgung, Banke</li>
                     <li><i class="fas fa-phone-alt"></i> +977-9820142449</li>
-                    <li><i class="fas fa-envelope"></i> info@cctvpro.com</li>
-                    <li><i class="fas fa-clock"></i> Mon-Sat: 9AM-6PM</li>
+                    <li><i class="fas fa-envelope"></i> info@nexgenbuildtech.com</li>
+                    <li><i class="fas fa-clock"></i> Sun - Fri: 10AM - 6PM</li>
                 </ul>
             </div>
         </div>
         <div class="fbt">
-            <p>&copy; {{ date('Y') }} <a href="{{ url('/') }}">NEX Gen</a>. All Rights Reserved.</p>
+            <p>&copy; {{ date('Y') }} <a href="{{ url('/') }}">NEXGEN</a>. All Rights Reserved.</p>
             <div class="fln">
                 <a href="#">Privacy</a>
                 <a href="#">Terms</a>

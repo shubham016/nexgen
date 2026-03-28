@@ -142,10 +142,11 @@ ul {
 
 /* Topbar Styles */
 .topbar {
-    background: var(--nv);
+    background: #dceef9;
     padding: 10px 0;
     font-size: 0.82rem;
-    color: var(--g4);
+    color: #1a3a5c;
+    border-bottom: 1px solid rgba(26, 109, 212, 0.15);
 }
 
 .tbi {
@@ -184,8 +185,8 @@ ul {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.06);
-    color: var(--g4);
+    background: rgba(26, 109, 212, 0.12);
+    color: #1a6dd4;
     font-size: 0.72rem;
     transition: var(--t);
 }
@@ -197,71 +198,38 @@ ul {
 
 /* Navbar Styles */
 nav.nb {
-    /* Default: solid blue at page top — hero is below navbar, not behind it */
-    background: #048eef;
+    background: #f5f8ff;
     backdrop-filter: blur(0px);
     -webkit-backdrop-filter: blur(0px);
     position: sticky;
     top: 0;
     z-index: 9999;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 20px rgba(4, 142, 239, 0.4);
+    border-bottom: 1px solid #e0e8f5;
+    box-shadow: none;
     transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease, -webkit-backdrop-filter 0.4s ease;
 }
 
-/* State 2: Liquid glass — while scrolling over the hero section */
+/* State 2: Frosted white glass — while scrolling over hero */
 nav.nb.nb-glass {
-    background: rgba(16, 95, 190, 0.24);
-    backdrop-filter: blur(18px) saturate(180%) brightness(1.06);
-    -webkit-backdrop-filter: blur(18px) saturate(180%) brightness(1.06);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-    box-shadow:
-        0 8px 32px rgba(10, 60, 140, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.42),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.08);
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
 }
 
-/* State 3: #156dc5 base + subtle glass shimmer over white sections */
+/* State 3: scrolled — add a gentle lift shadow */
 nav.nb.nb-dark {
-    background: rgb(21, 109, 197);
+    background: #f5f8ff;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow:
-        0 4px 20px rgba(21, 109, 197, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.28),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid #e8e8e8;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
-/* Specular highlights — only active in glass state */
-nav.nb::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 55%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, transparent 100%);
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
+nav.nb::before,
 nav.nb::after {
-    content: '';
-    position: absolute;
-    inset: 1px;
-    background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.12), transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-nav.nb.nb-glass::before,
-nav.nb.nb-glass::after,
-nav.nb.nb-dark::before,
-nav.nb.nb-dark::after {
-    opacity: 1;
+    display: none;
 }
 
 .ni {
@@ -279,8 +247,9 @@ nav.nb.nb-dark::after {
 }
 
 .logo img {
-    height: 66px;
+    height: 90px;
     width: auto;
+    margin: -5px 0 -15px 0;
 }
 
 .logo-name {
@@ -288,8 +257,8 @@ nav.nb.nb-dark::after {
     text-align: center;
     font-family: var(--fh);
     font-size: 1.25rem;
-    font-weight: 700;
-    color: #ffffff;
+    font-weight: 900;
+    color: #2081da;
     letter-spacing: 1px;
     text-transform: uppercase;
     white-space: nowrap;
@@ -322,7 +291,7 @@ nav.nb.nb-dark::after {
     font-family: var(--fh);
     font-size: 0.88rem;
     font-weight: 600;
-    color: #E8F0FE;
+    color: #444444;
     text-transform: uppercase;
     letter-spacing: 0.7px;
     transition: var(--t);
@@ -331,17 +300,17 @@ nav.nb.nb-dark::after {
 
 .nmn a:hover,
 .nmn a.active {
-    color: #ffffff;
+    color: #111111;
 }
 
 .nmn a::after {
     content: "";
     position: absolute;
-    bottom: -3px;
+    bottom: 0;
     left: 50%;
     right: 50%;
     height: 3px;
-    background: rgba(255, 255, 255, 0.75);
+    background: #111111;
     border-radius: 3px 3px 0 0;
     transition: var(--t);
 }
@@ -365,16 +334,16 @@ nav.nb.nb-dark::after {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    border: 1.5px solid #E8F0FE;
-    color: #E8F0FE;
+    border: 1.5px solid #111111;
+    color: #111111;
     cursor: pointer;
     transition: var(--t);
     font-size: 0.85rem;
 }
 
 .nsr:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: #ffffff;
+    background: #048eef;
+    border-color: #048eef;
     color: #fff;
 }
 
@@ -412,7 +381,7 @@ nav.nb.nb-dark::after {
     display: block;
     width: 22px;
     height: 2px;
-    background: var(--w);
+    background: #111111;
     margin: 5px 0;
 }
 
@@ -1357,7 +1326,7 @@ nav.nb.nb-dark::after {
 
 /* Footer */
 footer {
-    background: var(--nv);
+    background: #dceef9;
     padding: 55px 0 0;
 }
 
@@ -1366,7 +1335,7 @@ footer {
     grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
     gap: 50px;
     padding-bottom: 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(26, 109, 212, 0.18);
 }
 
 .fbd .logo {
@@ -1379,7 +1348,7 @@ footer {
     gap: 8px;
     font-family: var(--fh);
     font-size: 1.25rem;
-    font-weight: 700;
+    font-weight: 900;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
@@ -1390,16 +1359,18 @@ footer {
 }
 
 .flogo-nex {
-    color: var(--bl);
+    color: #2081da;
+    font-weight: 900;
 }
 
 .flogo-gen {
-    color: #ff6b2b;
+    color: #f96900;
+    font-weight: 900;
 }
 
 .fbd > p {
     font-size: 0.88rem;
-    color: var(--g4);
+    color: #1a3a5c;
     line-height: 1.8;
     margin-bottom: 12px;
 }
@@ -1413,11 +1384,11 @@ footer {
     width: 38px;
     height: 38px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(26, 109, 212, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--g4);
+    color: #1a6dd4;
     font-size: 0.85rem;
     transition: var(--t);
 }
@@ -1431,7 +1402,7 @@ footer {
     font-family: var(--fh);
     font-size: 1rem;
     font-weight: 700;
-    color: var(--w);
+    color: #0f2d4e;
     margin-bottom: 24px;
     position: relative;
     padding-bottom: 12px;
@@ -1456,7 +1427,7 @@ footer {
 
 .fcl li a {
     font-size: 0.88rem;
-    color: var(--g4);
+    color: #111111;
     transition: var(--t);
     display: flex;
     align-items: center;
@@ -1464,7 +1435,7 @@ footer {
 }
 
 .fcl li a:hover {
-    color: var(--w);
+    color: #1a6dd4;
     padding-left: 4px;
 }
 
@@ -1478,7 +1449,7 @@ footer {
     align-items: flex-start;
     gap: 12px;
     font-size: 0.88rem;
-    color: var(--g4);
+    color: #111111;
     margin-bottom: 16px;
 }
 
@@ -1494,7 +1465,8 @@ footer {
     align-items: center;
     padding: 24px 0;
     font-size: 0.82rem;
-    color: var(--g6);
+    color: #1a3a5c;
+    border-top: 1px solid rgba(26, 109, 212, 0.18);
 }
 
 .fbt a {
@@ -1507,12 +1479,12 @@ footer {
 }
 
 .fln a {
-    color: var(--g4);
+    color: #1a3a5c;
     transition: var(--t);
 }
 
 .fln a:hover {
-    color: var(--w);
+    color: #1a6dd4;
 }
 
 /* Scroll to Top Button */

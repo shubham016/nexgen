@@ -1,8 +1,8 @@
 <nav class="nb">
     <div class="cn ni">
         <a href="{{ url('/') }}" class="logo">
-            <img src="{{ asset('images/logo.png') }}" alt="NEX GEN" />
-            <span class="logo-name">NEX <b>GEN</b></span>
+            <img src="{{ asset('images/logo.png') }}" alt="NEXGEN" />
+            <span class="logo-name">NEX<b>GEN</b></span>
         </a>
         <div class="nmn">
             <a href="/" class="active">Home</a>
