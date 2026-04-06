@@ -35,7 +35,6 @@
                 <i class="far fa-star"></i>
             @endfor
 
-            <span>({{ $reviews }})</span>
         </div>
         <div class="pprow">
             <div class="pprc">{{ $price }} @if(isset($oldPrice))<span class="old">{{ $oldPrice }}</span>@endif</div>

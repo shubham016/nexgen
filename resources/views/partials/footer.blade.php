@@ -7,8 +7,11 @@
                     <span><span class="flogo-nex">NEX</span><span class="flogo-gen">GEN</span></span>
                 </a>
                 <p>
-                    Your trusted partner for CCTV surveillance and security.
-                    Protecting homes and businesses across Nepal since 2009.
+                    NexGen Build Tech is Nepal's leading provider of advanced CCTV surveillance
+                    and integrated security solutions. From professional installation and 24/7
+                    remote monitoring to an ongoing maintenance — we safeguard homes, businesses,
+                    and enterprises across Nepal with cutting-edge technology you can trust
+                    every single day.
                 </p>
                 <div class="fso">
                     <a href="https://www.facebook.com/share/1FQfsVgtnF/" target="_blank"><i class="fab fa-facebook-f"></i></a>

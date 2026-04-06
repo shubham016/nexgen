@@ -27,42 +27,34 @@
             <div class="hv">
                 <div class="cc">
                     <div class="cg">
+                        @php
+                            $defaultVideoUrl = asset('videos/cctv_footage.mp4');
+                            $defaultLabels   = ['cam 01 - front gate', 'cam 02 - parking', 'cam 03 - back door', 'cam 04 - rooftop'];
+                            $heroCameras = ($cameras ?? collect())->count()
+                                ? $cameras
+                                : collect($defaultLabels)->map(function ($label) use ($defaultVideoUrl) {
+                                    return new class($label, $defaultVideoUrl) {
+                                        public string $label;
+                                        private string $url;
+                                        public function __construct(string $label, string $url) {
+                                            $this->label = $label;
+                                            $this->url   = $url;
+                                        }
+                                        public function videoUrl(): string { return $this->url; }
+                                    };
+                                });
+                        @endphp
+                        @foreach($heroCameras as $i => $cam)
                         <div class="cp">
-                            <div class="scl">
+                            <div class="scl"{{ $i > 0 ? ' style="animation-delay: ' . $i . 's"' : '' }}>
                                 <video autoplay muted loop playsinline>
-                                    <source src="{{ asset('videos/cctv_footage.mp4') }}" type="video/mp4" />
+                                    <source src="{{ $cam->videoUrl() }}" type="video/mp4" />
                                 </video>
                             </div>
-                            <span class="cml">cam 01 - front gate</span>
+                            <span class="cml">{{ $cam->label }}</span>
                             <span class="cdt"></span>
                         </div>
-                        <div class="cp">
-                            <div class="scl" style="animation-delay: 1s">
-                                <video autoplay muted loop playsinline>
-                                    <source src="{{ asset('videos/cctv_footage.mp4') }}" type="video/mp4" />
-                                </video>
-                            </div>
-                            <span class="cml">cam 02 - parking</span>
-                            <span class="cdt"></span>
-                        </div>
-                        <div class="cp">
-                            <div class="scl" style="animation-delay: 2s">
-                                <video autoplay muted loop playsinline>
-                                    <source src="{{ asset('videos/cctv_footage.mp4') }}" type="video/mp4" />
-                                </video>
-                            </div>
-                            <span class="cml">cam 03 - back door</span>
-                            <span class="cdt"></span>
-                        </div>
-                        <div class="cp">
-                            <div class="scl" style="animation-delay: 3s">
-                                <video autoplay muted loop playsinline>
-                                    <source src="{{ asset('videos/cctv_footage.mp4') }}" type="video/mp4" />
-                                </video>
-                            </div>
-                            <span class="cml">cam 04 - rooftop</span>
-                            <span class="cdt"></span>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="cmb">
                         <div class="cms">
@@ -223,90 +215,22 @@
             <div class="sln"></div>
         </div>
         <div class="prgd">
-            @include('partials.product-card', [
-                'image' => asset('images/camera/4.jpg.jpeg'),
-                'badge' => 'Hot',
-                'badgeClass' => 'pbh',
-                'category' => 'Outdoor Camera',
-                'name' => 'Bullet Camera IR Night Vision',
-                'rating' => 4.5,
-                'reviews' => 128,
-                'price' => 'Rs 249',
-                'oldPrice' => 'Rs 329'
-            ])
-            @include('partials.product-card', [
-                'image' => asset('images/camera/5.jpg.jpeg'),
-                'badge' => 'New',
-                'badgeClass' => 'pbn',
-                'category' => 'Outdoor Camera',
-                'name' => 'Bullet Camera 8MP IP67 Weatherproof',
-                'rating' => 5,
-                'reviews' => 256,
-                'price' => 'Rs 1,499',
-                'oldPrice' => 'Rs 2,199'
-            ])
-            @include('partials.product-card', [
-                'image' => asset('images/camera/9.jpg.jpeg'),
-                'badge' => 'Sale',
-                'badgeClass' => 'pbsl',
-                'category' => 'DVR System',
-                'name' => 'HD Digital Video Recorder 8-Channel',
-                'rating' => 4,
-                'reviews' => 89,
-                'price' => 'Rs 749',
-                'oldPrice' => 'Rs 999'
-            ])
-            @include('partials.product-card', [
-                'image' => asset('images/camera/12.jpg.jpeg'),
-                'category' => 'NVR System',
-                'name' => 'HD Digital Video Recorder 16-Channel',
-                'rating' => 4.5,
-                'reviews' => 167,
-                'price' => 'Rs 1,499',
-                'oldPrice' => 'Rs 2,500'
-            ])
-            @include('partials.product-card', [
-                'image' => asset('images/camera/6.jpg.jpeg'),
-                'badge' => 'New',
-                'badgeClass' => 'pbn',
-                'category' => 'Networking',
-                'name' => 'PoE Network Switch 8-Port',
-                'rating' => 5,
-                'reviews' => 312,
-                'price' => 'Rs 129',
-                'oldPrice' => 'Rs 179'
-            ])
-            @include('partials.product-card', [
-                'image' => asset('images/camera/7.jpg.jpeg'),
-                'badge' => 'Hot',
-                'badgeClass' => 'pbh',
-                'category' => 'DVR System',
-                'name' => 'HD Digital Video Recorder 4-Channel',
-                'rating' => 4,
-                'reviews' => 74,
-                'price' => 'Rs 2,499',
-                'oldPrice' => 'Rs 5,199'
-            ])
-            @include('partials.product-card', [
-                'image' => asset('images/camera/8.jpg.jpeg'),
-                'category' => 'Networking',
-                'name' => 'PoE Switch 4-Port 100Mbps',
-                'rating' => 4.5,
-                'reviews' => 198,
-                'price' => 'Rs 299',
-                'oldPrice' => 'Rs 399'
-            ])
-            @include('partials.product-card', [
-                'image' => asset('images/camera/10.jpg.jpeg'),
-                'badge' => 'Sale',
-                'badgeClass' => 'pbsl',
-                'category' => 'DVR System',
-                'name' => 'HD Digital Video Recorder Pro',
-                'rating' => 5,
-                'reviews' => 445,
-                'price' => 'Rs 2,499',
-                'oldPrice' => 'Rs 3,199'
-            ])
+            @forelse($products ?? [] as $product)
+                @include('partials.product-card', [
+                    'image'      => $product->imageUrl(),
+                    'badge'      => $product->badge ? ucfirst($product->badge) : null,
+                    'badgeClass' => $product->badgeClass(),
+                    'category'   => $product->category?->name ?? 'Security Camera',
+                    'name'       => $product->name,
+                    'rating'     => (float) $product->rating,
+                    'price'      => $product->formattedPrice(),
+                    'oldPrice'   => $product->formattedOldPrice(),
+                ])
+            @empty
+                <div class="text-center py-5" style="grid-column: 1/-1;">
+                    <p style="color:#888;">No products available yet. Check back soon!</p>
+                </div>
+            @endforelse
         </div>
     </div>
 </section>
@@ -320,6 +244,13 @@
             <div class="sln"></div>
         </div>
         <div class="wgd">
+            @forelse($stats ?? [] as $stat)
+            <div class="wcr rv">
+                <div class="wic"><i class="{{ $stat->icon }}"></i></div>
+                <h3>{{ $stat->value }}</h3>
+                <p>{{ $stat->label }}</p>
+            </div>
+            @empty
             <div class="wcr rv">
                 <div class="wic"><i class="fas fa-video"></i></div>
                 <h3>15,000+</h3>
@@ -340,11 +271,13 @@
                 <h3>25+</h3>
                 <p>Industry Awards</p>
             </div>
+            @endforelse
         </div>
     </div>
 </section>
 
 <!-- Testimonials Section -->
+@if(($testimonials ?? collect())->isNotEmpty())
 <section class="testi" id="testi">
     <div class="cn">
         <div class="sh rv">
@@ -352,31 +285,125 @@
             <h2 class="stt">What Our Clients Say</h2>
             <div class="sln"></div>
         </div>
-        <div class="tgd">
-            @include('partials.testimonial', [
-                'quote' => 'CCTV Pro installed a 16-camera system for our hotel. Clean, professional work. We monitor everything from phones now!',
-                'avatar' => 'BT',
-                'name' => 'Bikash Thapa',
-                'role' => 'Hotel Owner, Pokhara',
-                'rating' => 5
-            ])
-            @include('partials.testimonial', [
-                'quote' => 'Upgraded our warehouse security. AI detection caught multiple incidents. Support responds within minutes!',
-                'avatar' => 'PS',
-                'name' => 'Priya Sharma',
-                'role' => 'Operations Manager',
-                'rating' => 5
-            ])
-            @include('partials.testimonial', [
-                'quote' => 'Best CCTV service in Kathmandu! Free site survey, perfect setup for retail. Night vision is amazing!',
-                'avatar' => 'RG',
-                'name' => 'Ramesh Gurung',
-                'role' => 'Retail Chain Owner',
-                'rating' => 4.5
-            ])
+        <div class="tslider">
+            <button class="tsb tsprev" id="tsPrev" aria-label="Previous testimonial">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="ttrack" id="tsTrack">
+                <div class="tgd" id="tsGrid">
+                    @foreach($testimonials as $t)
+                        @include('partials.testimonial', [
+                            'quote'  => $t->quote,
+                            'avatar' => $t->avatar,
+                            'photo'  => $t->photoUrl(),
+                            'name'   => $t->name,
+                            'role'   => $t->role,
+                            'rating' => $t->rating,
+                        ])
+                    @endforeach
+                </div>
+            </div>
+            <button class="tsb tsnext" id="tsNext" aria-label="Next testimonial">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
+
+        <script>
+        (function () {
+            var section = document.getElementById('testi');
+            var track   = document.getElementById('tsTrack');
+            var grid    = document.getElementById('tsGrid');
+            var prevBtn = document.getElementById('tsPrev');
+            var nextBtn = document.getElementById('tsNext');
+            var cards   = grid ? Array.from(grid.querySelectorAll('.tcr')) : [];
+            var GAP      = 28;
+            var INTERVAL = 3000;
+            var current  = 0;
+            var timer    = null;
+
+            if (!cards.length) return;
+
+            function perPage()   { return window.innerWidth <= 768 ? 1 : 3; }
+            function maxIndex()  { return Math.max(0, cards.length - perPage()); }
+            function stepWidth() { return cards[0].offsetWidth + GAP; }
+
+            function setCardWidths() {
+                var ipp   = perPage();
+                var cardW = (track.offsetWidth - GAP * (ipp - 1)) / ipp;
+                cards.forEach(function (c) { c.style.flex = '0 0 ' + cardW + 'px'; });
+            }
+
+            function update() {
+                current = Math.min(current, maxIndex());
+                grid.style.transform = 'translateX(-' + (current * stepWidth()) + 'px)';
+                prevBtn.disabled = current === 0;
+                nextBtn.disabled = current >= maxIndex();
+            }
+
+            function next() {
+                current = current >= maxIndex() ? 0 : current + 1;
+                update();
+            }
+
+            function startAuto() {
+                if (timer || maxIndex() === 0) return;
+                timer = setInterval(next, INTERVAL);
+            }
+
+            function stopAuto() {
+                clearInterval(timer);
+                timer = null;
+            }
+
+            // Pause on hover, resume on leave
+            section.addEventListener('mouseenter', stopAuto);
+            section.addEventListener('mouseleave', function () {
+                if (isVisible) startAuto();
+            });
+
+            // Manual controls reset the timer
+            prevBtn.addEventListener('click', function () {
+                stopAuto();
+                current = Math.max(0, current - 1);
+                update();
+                if (isVisible) startAuto();
+            });
+            nextBtn.addEventListener('click', function () {
+                stopAuto();
+                current = Math.min(maxIndex(), current + 1);
+                update();
+                if (isVisible) startAuto();
+            });
+
+            window.addEventListener('resize', function () {
+                stopAuto();
+                current = 0;
+                setCardWidths();
+                update();
+                if (isVisible) startAuto();
+            });
+
+            // Only autoplay when section is in viewport
+            var isVisible = false;
+            var observer  = new IntersectionObserver(function (entries) {
+                isVisible = entries[0].isIntersecting;
+                isVisible ? startAuto() : stopAuto();
+            }, { threshold: 0.3 });
+
+            observer.observe(section);
+
+            function init() { setCardWidths(); update(); }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+        </script>
     </div>
 </section>
+@endif
 
 <!-- CTA Section -->
 <section class="cta" id="contact">

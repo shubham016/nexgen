@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Sign In - NEX Gen Admin</title>
+    <title>Sign In - NEXGEN Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('admin-assets/css/main.css') }}">
@@ -13,7 +13,7 @@
             <div class="text-center mb-4">
                 <a href="{{ route('home') }}" class="d-inline-flex align-items-center gap-2 mb-3">
                     <img src="{{ asset('images/logo.png') }}" alt="NEX Gen" width="40">
-                    <span class="fs-4 fw-bold" style="color: #1a6dd4;">NEX Gen</span>
+                    <span class="fs-4 fw-bold" style="color: #1a6dd4;">NEXGEN</span>
                 </a>
                 <h3 class="fw-bold mb-1">Admin Login</h3>
                 <p class="text-muted small">Enter your credentials to access the dashboard</p>

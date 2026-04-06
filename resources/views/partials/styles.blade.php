@@ -1201,10 +1201,50 @@ nav.nb::after {
     background: #d4e8f6;
 }
 
+.tslider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.ttrack {
+    overflow: hidden;
+    flex: 1;
+    min-width: 0;
+}
+
 .tgd {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 28px;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.tsb {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid var(--bl);
+    color: var(--bl);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--t);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tsb:hover:not(:disabled) {
+    background: var(--bl);
+    color: #fff;
+}
+
+.tsb:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
 }
 
 .tcr {
@@ -1213,6 +1253,8 @@ nav.nb::after {
     padding: 36px 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     transition: var(--t);
+    display: flex;
+    flex-direction: column;
 }
 
 .tcr:hover {
@@ -1235,6 +1277,7 @@ nav.nb::after {
     line-height: 1.8;
     font-style: italic;
     margin-bottom: 24px;
+    flex: 1;
 }
 
 .tau {
@@ -1255,6 +1298,7 @@ nav.nb::after {
     font-weight: 800;
     color: var(--w);
     font-size: 0.9rem;
+    overflow: hidden;
 }
 
 .tnm {
@@ -1338,6 +1382,11 @@ footer {
     border-bottom: 1px solid rgba(26, 109, 212, 0.18);
 }
 
+.fbd {
+    display: flex;
+    flex-direction: column;
+}
+
 .fbd .logo {
     margin-bottom: 8px;
 }
@@ -1370,14 +1419,16 @@ footer {
 
 .fbd > p {
     font-size: 0.88rem;
-    color: #1a3a5c;
-    line-height: 1.8;
-    margin-bottom: 12px;
+    color: #111111;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    text-align: justify;
 }
 
 .fso {
     display: flex;
     gap: 10px;
+    margin-top: 20px;
 }
 
 .fso a {
@@ -1605,9 +1656,14 @@ footer {
     .igr {
         grid-template-columns: 1fr 1fr;
     }
-    .svg2,
-    .tgd {
+    .svg2 {
         grid-template-columns: 1fr;
+    }
+
+    .tsb {
+        width: 36px;
+        height: 36px;
+        font-size: 0.75rem;
     }
     .prgd {
         grid-template-columns: 1fr 1fr;
