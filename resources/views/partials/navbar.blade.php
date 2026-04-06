@@ -1,7 +1,7 @@
 <nav class="nb">
     <div class="cn ni">
         <a href="{{ url('/') }}" class="logo">
-            <img src="{{ asset('images/logo.png') }}" alt="NEXGEN" />
+            <img src="{{ asset('images/logo.png') }}?v=2" alt="NEXGEN" />
             <span class="logo-name">NEX<b>GEN</b></span>
         </a>
         <div class="nmn">
