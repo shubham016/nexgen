@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>Sign Up - NEX Gen Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/nexgen_logo.png') }}">
     <link rel="stylesheet" href="{{ asset('admin-assets/css/main.css') }}">
 </head>
 <body>
@@ -12,7 +12,7 @@
         <div class="card p-5 shadow-lg" style="max-width: 480px; width: 100%;">
             <div class="text-center mb-4">
                 <a href="{{ route('home') }}" class="d-inline-flex align-items-center gap-2 mb-3">
-                    <img src="{{ asset('images/logo.png') }}" alt="NEX Gen" width="40">
+                    <img src="{{ asset('images/nexgen_logo.png') }}" alt="NEX Gen" width="40">
                     <span class="fs-4 fw-bold" style="color: #1a6dd4;">NEX Gen</span>
                 </a>
                 <h3 class="fw-bold mb-1">Create Admin Account</h3>

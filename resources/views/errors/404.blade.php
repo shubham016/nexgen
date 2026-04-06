@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>404 — Page Not Found | NEX Gen</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}" />
+    <link rel="icon" type="image/png" href="{{ asset('images/nexgen_logo.png') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
