@@ -2,7 +2,7 @@
 <aside id="sidebar" class="sidebar">
     <div class="logo-area">
         <a href="{{ route('admin.dashboard') }}" class="d-inline-flex">
-            <img src="{{ asset('images/logo.png') }}" alt="NEX Gen" width="40">
+            <img src="{{ asset('images/nexgen_logo.png') }}" alt="NEX Gen" width="40">
             <span class="logo-text ms-2 fs-5 fw-bold" style="color: #1a6dd4;">NEXGEN</span>
         </a>
     </div>
