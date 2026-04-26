@@ -40,7 +40,8 @@
                 </div>
             </div>
             <div class="card-footer bg-white d-flex gap-2">
-                <a href="mailto:{{ $message->email }}" class="btn btn-primary btn-sm">
+                <a href="https://nexgenbuildtech.com:2096/roundcube/?_task=mail&_action=compose&_to={{ urlencode($message->email) }}&_subject={{ urlencode('Re: ' . ($message->subject ?: 'Your Enquiry')) }}"
+                   target="_blank" class="btn btn-primary btn-sm">
                     <i class="ti ti-mail me-1"></i> Reply via Email
                 </a>
                 <form method="POST" action="{{ route('admin.messages.destroy', $message) }}"
