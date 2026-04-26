@@ -1,7 +1,7 @@
 <div class="topbar">
     <div class="cn tbi">
         <div class="tbl">
-            <span><i class="fas fa-map-marker-alt"></i> Nepalgung, Banke</span>
+            <span><i class="fas fa-map-marker-alt"></i> Nepalgunj, Banke</span>
             <span><i class="fas fa-envelope"></i> info@nexgenbuildtech.com</span>
             <span><i class="fas fa-clock"></i> Sun - Fri: 10AM - 6PM</span>
         </div>

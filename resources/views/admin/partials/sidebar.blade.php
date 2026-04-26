@@ -45,6 +45,19 @@
             </a>
         </li>
 
+        <li>
+            <a class="nav-link {{ request()->routeIs('admin.messages.*') ? 'active' : '' }}"
+                href="{{ route('admin.messages.index') }}">
+                <i class="ti ti-mail"></i>
+                <span class="nav-text">Messages
+                    @php $newMsgCount = \App\Models\ContactMessage::where('status','new')->count(); @endphp
+                    @if($newMsgCount > 0)
+                        <span class="badge bg-danger ms-1" style="font-size:0.65rem;">{{ $newMsgCount }}</span>
+                    @endif
+                </span>
+            </a>
+        </li>
+
         <li class="px-4 pt-4 pb-2"><small class="nav-text">Website Content</small></li>
         <li>
             <a class="nav-link {{ request()->routeIs('admin.hero-cameras.*') ? 'active' : '' }}"

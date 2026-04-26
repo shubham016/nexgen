@@ -1,4 +1,4 @@
-<div class="pcd rv">
+<div class="pcd rv" data-pf-name="{{ strtolower($name) }}" data-pf-cat="{{ strtolower($category) }}">
     <div class="pim">
         @if(isset($image))
             <img src="{{ $image }}" alt="{{ $name }}" loading="lazy" />
@@ -11,7 +11,20 @@
         @endif
 
         <div class="pact">
-            <button class="pab"><i class="fas fa-eye"></i></button>
+            <button class="pab"
+                data-image="{{ $image ?? '' }}"
+                data-name="{{ $name }}"
+                data-category="{{ $category }}"
+                data-price="{{ $price }}"
+                data-old-price="{{ $oldPrice ?? '' }}"
+                data-badge="{{ $badge ?? '' }}"
+                data-badge-class="{{ $badgeClass ?? '' }}"
+                data-rating="{{ $rating }}"
+                data-description="{{ $description ?? '' }}"
+                data-features="{{ $features ?? '' }}"
+                data-stock="{{ $stock ?? '' }}"
+                data-sku="{{ $sku ?? '' }}"
+            ><i class="fas fa-eye"></i></button>
         </div>
     </div>
     <div class="pinf">

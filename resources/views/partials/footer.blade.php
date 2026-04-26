@@ -33,29 +33,30 @@
             <div class="fcl">
                 <h4>Services</h4>
                 <ul>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> CCTV Installation</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Live Monitoring</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Cloud Storage</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Access Control</a></li>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Maintenance</a></li>
+                    <li><a href="/services"><i class="fas fa-chevron-right"></i> CCTV Installation</a></li>
+                    <li><a href="/services"><i class="fas fa-chevron-right"></i> Live Monitoring</a></li>
+                    <li><a href="/services"><i class="fas fa-chevron-right"></i> Cloud Storage</a></li>
+                    <li><a href="/services"><i class="fas fa-chevron-right"></i> Access Control</a></li>
+                    <li><a href="/services"><i class="fas fa-chevron-right"></i> Maintenance</a></li>
                 </ul>
             </div>
             <div class="fcl">
                 <h4>Contact</h4>
                 <ul class="fcn">
-                    <li><i class="fas fa-map-marker-alt"></i> Nepalgung, Banke</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Nepalgunj, Banke</li>
                     <li><i class="fas fa-phone-alt"></i> +977-9820142449</li>
                     <li><i class="fas fa-envelope"></i> info@nexgenbuildtech.com</li>
+                    <li><i class="fas fa-envelope"></i> sales@nexgenbuildtech.com</li>
                     <li><i class="fas fa-clock"></i> Sun - Fri: 10AM - 6PM</li>
                 </ul>
             </div>
         </div>
         <div class="fbt">
             <p>&copy; {{ date('Y') }} <a href="{{ url('/') }}">NEXGEN</a>. All Rights Reserved.</p>
-            <div class="fln">
+            <!-- <div class="fln">
                 <a href="#">Privacy</a>
                 <a href="#">Terms</a>
-            </div>
+            </div> -->
         </div>
     </div>
 </footer>

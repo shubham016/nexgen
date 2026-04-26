@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HeroCameraController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\StatController;
 use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Models\HeroCamera;
 use App\Models\Product;
@@ -36,6 +38,9 @@ Route::get('/services', $homeData);
 Route::get('/products', $homeData);
 Route::get('/reviews',  $homeData);
 Route::get('/contact',  $homeData);
+
+// Contact Form
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // Dashboard route - redirects to admin dashboard
 Route::get('/dashboard', function () {
@@ -195,6 +200,13 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(
 
         return $pdf->download('nexgen-products-' . now()->format('Y-m-d') . '.pdf');
     })->name('reports.pdf');
+
+    // Messages (Contact Enquiries)
+    Route::prefix('messages')->name('messages.')->group(function () {
+        Route::get('/',              [MessageController::class, 'index'])->name('index');
+        Route::get('/{message}',     [MessageController::class, 'show'])->name('show');
+        Route::delete('/{message}',  [MessageController::class, 'destroy'])->name('destroy');
+    });
 
     // Reports
     Route::get('/reports', function () {

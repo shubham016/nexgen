@@ -110,7 +110,7 @@
             <div class="iit">
                 <div class="iico"><i class="fas fa-certificate"></i></div>
                 <div class="iitx">
-                    <h4>2 Year Warranty</h4>
+                    <h4>1 Year Warranty</h4>
                     <p>Full product warranty</p>
                 </div>
             </div>
@@ -126,21 +126,21 @@
                 <div class="abm"><i class="fas fa-video"></i></div>
                 <div class="abs2"><i class="fas fa-shield-halved"></i></div>
                 <div class="exb">
-                    <div class="en">15+</div>
+                    <div class="en">5+</div>
                     <div class="el">Years<br />Experience</div>
                 </div>
             </div>
             <div class="abc rv">
-                <div class="ssub">About CCTV Pro</div>
+                <div class="ssub">About NexGen Build Tech</div>
                 <h2 class="stt">We Provide The Best CCTV Security Service</h2>
                 <p class="abt">
-                    CCTV Pro is a leading provider of security camera systems and
+                    NexGen Build Tech is a leading provider of security camera systems and
                     surveillance solutions. We specialize in designing, installing,
                     and maintaining security systems for residential, commercial, and
                     industrial properties.
                 </p>
                 <p class="abt">
-                    Our certified technicians bring over 15 years of experience,
+                    Our certified technicians bring over 5 years of experience,
                     ensuring every installation meets the highest quality standards.
                 </p>
                 <div class="abf">
@@ -170,37 +170,37 @@
                 <div class="siw"><i class="fas fa-video"></i></div>
                 <h3>CCTV Installation</h3>
                 <p>Professional installation of IP, analog, and wireless camera systems with strategic placement.</p>
-                <a href="#" class="slnk">Read More <i class="fas fa-arrow-right"></i></a>
+                <!-- <a href="#" class="slnk">Read More <i class="fas fa-arrow-right"></i></a> -->
             </div>
             <div class="scard rv">
                 <div class="siw"><i class="fas fa-desktop"></i></div>
                 <h3>Live Monitoring</h3>
                 <p>24/7 real-time surveillance with AI-powered alerts and instant notifications.</p>
-                <a href="#" class="slnk">Read More <i class="fas fa-arrow-right"></i></a>
+                <!-- <a href="#" class="slnk">Read More <i class="fas fa-arrow-right"></i></a> -->
             </div>
             <div class="scard rv">
                 <div class="siw"><i class="fas fa-cloud"></i></div>
                 <h3>Cloud Recording</h3>
                 <p>Secure cloud-based video storage with access from anywhere in the world.</p>
-                <a href="#" class="slnk">Read More <i class="fas fa-arrow-right"></i></a>
+                <!-- <a href="#" class="slnk">Read More <i class="fas fa-arrow-right"></i></a> -->
             </div>
             <div class="scard rv">
                 <div class="siw"><i class="fas fa-door-open"></i></div>
                 <h3>Access Control</h3>
                 <p>Smart locks, biometric systems, and keycard access integrated with cameras.</p>
-                <a href="#" class="slnk">Read More <i class="fas fa-arrow-right"></i></a>
+                <!-- <a href="#" class="slnk">Read More <i class="fas fa-arrow-right"></i></a> -->
             </div>
             <div class="scard rv">
                 <div class="siw"><i class="fas fa-bell"></i></div>
                 <h3>Alarm Systems</h3>
                 <p>Intrusion detection, fire alarm, and smoke sensors linked to centers.</p>
-                <a href="#" class="slnk">Read More <i class="fas fa-arrow-right"></i></a>
+                <!-- <a href="#" class="slnk">Read More <i class="fas fa-arrow-right"></i></a> -->
             </div>
             <div class="scard rv">
                 <div class="siw"><i class="fas fa-wrench"></i></div>
                 <h3>AMC & Maintenance</h3>
                 <p>Annual contracts with inspections, firmware updates, and priority support.</p>
-                <a href="#" class="slnk">Read More <i class="fas fa-arrow-right"></i></a>
+                <!-- <a href="#" class="slnk">Read More <i class="fas fa-arrow-right"></i></a> -->
             </div>
         </div>
     </div>
@@ -214,28 +214,52 @@
             <h2 class="stt">Featured Security Products</h2>
             <div class="sln"></div>
         </div>
-        <div class="prgd">
+        @php
+            $uniqueCats = ($products ?? collect())->filter(fn($p) => $p->category)->pluck('category')->unique('id')->sortBy('name');
+        @endphp
+        @if($uniqueCats->isNotEmpty() || ($products ?? collect())->isNotEmpty())
+        <div class="pfb">
+            <div class="pfts" id="pfTabs">
+                <button class="pft active" data-cat="all">All Products</button>
+                @foreach($uniqueCats as $cat)
+                    <button class="pft" data-cat="{{ strtolower($cat->name) }}">{{ $cat->name }}</button>
+                @endforeach
+            </div>
+            <div class="pfsw">
+                <i class="fas fa-search"></i>
+                <input type="text" id="pfSearch" placeholder="Search products...">
+            </div>
+        </div>
+        @endif
+        <div class="prgd" id="prgd">
             @forelse($products ?? [] as $product)
                 @include('partials.product-card', [
-                    'image'      => $product->imageUrl(),
-                    'badge'      => $product->badge ? ucfirst($product->badge) : null,
-                    'badgeClass' => $product->badgeClass(),
-                    'category'   => $product->category?->name ?? 'Security Camera',
-                    'name'       => $product->name,
-                    'rating'     => (float) $product->rating,
-                    'price'      => $product->formattedPrice(),
-                    'oldPrice'   => $product->formattedOldPrice(),
+                    'image'       => $product->imageUrl(),
+                    'badge'       => $product->badge ? ucfirst($product->badge) : null,
+                    'badgeClass'  => $product->badgeClass(),
+                    'category'    => $product->category?->name ?? 'Security Camera',
+                    'name'        => $product->name,
+                    'rating'      => (float) $product->rating,
+                    'price'       => $product->formattedPrice(),
+                    'oldPrice'    => $product->formattedOldPrice(),
+                    'description' => $product->description,
+                    'features'    => $product->features,
+                    'stock'       => $product->stock,
+                    'sku'         => $product->sku,
                 ])
             @empty
-                <div class="text-center py-5" style="grid-column: 1/-1;">
+                <div style="grid-column:1/-1;text-align:center;padding:60px 0;">
                     <p style="color:#888;">No products available yet. Check back soon!</p>
                 </div>
             @endforelse
         </div>
+        <div class="pfempty" id="pfEmpty" style="display:none;">
+            <i class="fas fa-search"></i>
+            <p>No products match your search.</p>
+        </div>
     </div>
 </section>
 
-<!-- Why Choose Us -->
 <section class="why">
     <div class="cn">
         <div class="sh rv">
@@ -251,26 +275,7 @@
                 <p>{{ $stat->label }}</p>
             </div>
             @empty
-            <div class="wcr rv">
-                <div class="wic"><i class="fas fa-video"></i></div>
-                <h3>15,000+</h3>
-                <p>Cameras Installed</p>
-            </div>
-            <div class="wcr rv">
-                <div class="wic"><i class="fas fa-users"></i></div>
-                <h3>5,000+</h3>
-                <p>Happy Clients</p>
-            </div>
-            <div class="wcr rv">
-                <div class="wic"><i class="fas fa-building"></i></div>
-                <h3>800+</h3>
-                <p>Projects Completed</p>
-            </div>
-            <div class="wcr rv">
-                <div class="wic"><i class="fas fa-trophy"></i></div>
-                <h3>25+</h3>
-                <p>Industry Awards</p>
-            </div>
+            <div class="wcr rv">...fallback...</div>
             @endforelse
         </div>
     </div>
@@ -405,16 +410,146 @@
 </section>
 @endif
 
-<!-- CTA Section -->
-<section class="cta" id="contact">
+{{-- CTA Section — commented out --}}
+{{-- <section class="cta">...</section> --}}
+
+<!-- Contact Section -->
+<section class="contact-sec" id="contact">
     <div class="cn">
-        <h2>Need A Security System For Your Property?</h2>
-        <p>Get a free site survey and customized solution designed for your needs and budget.</p>
-        <div class="ctab">
-            <a href="#" class="btn btn-o">Get Free Quote <i class="fas fa-arrow-right"></i></a>
-            <a href="tel:+9779820142449" class="btn btn-ol"><i class="fas fa-phone-alt"></i> +977-9820142449</a>
+        <div class="sh rv">
+            <div class="ssub">Get In Touch</div>
+            <h2 class="stt">Send Us a Message</h2>
+            <div class="sln"></div>
+        </div>
+        <div class="ctc-grid">
+
+            <!-- Form -->
+            <div class="ctc-form-wrap rv">
+                @if(session('contact_success'))
+                    <div class="ctc-success">
+                        <i class="fas fa-check-circle"></i>
+                        {{ session('contact_success') }}
+                    </div>
+                @endif
+
+                <form class="ctc-form" action="{{ route('contact.store') }}" method="POST" novalidate>
+                    @csrf
+                    <div class="ctc-row">
+                        <div class="ctc-field">
+                            <label for="ctcName">Full Name <span>*</span></label>
+                            <input type="text" id="ctcName" name="name" placeholder="Suman Gurung"
+                                value="{{ old('name') }}" required>
+                            @error('name')<span class="ctc-err">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="ctc-field">
+                            <label for="ctcPhone">Phone Number</label>
+                            <input type="tel" id="ctcPhone" name="phone" placeholder="+977-98XXXXXXXX"
+                                value="{{ old('phone') }}">
+                            @error('phone')<span class="ctc-err">{{ $message }}</span>@enderror
+                        </div>
+                    </div>
+                    <div class="ctc-field">
+                        <label for="ctcEmail">Email Address <span>*</span></label>
+                        <input type="email" id="ctcEmail" name="email" placeholder="your@gmail.com"
+                            value="{{ old('email') }}" required>
+                        @error('email')<span class="ctc-err">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="ctc-field">
+                        <label for="ctcSubject">Subject</label>
+                        <input type="text" id="ctcSubject" name="subject" placeholder="Dome Camera Inquiry"
+                            value="{{ old('subject') }}">
+                        @error('subject')<span class="ctc-err">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="ctc-field">
+                        <label for="ctcMsg">Message <span>*</span></label>
+                        <textarea id="ctcMsg" name="message" rows="5"
+                            placeholder="Tell us about your property, number of cameras needed, or any questions…" required>{{ old('message') }}</textarea>
+                        @error('message')<span class="ctc-err">{{ $message }}</span>@enderror
+                    </div>
+                    <button type="submit" class="btn btn-p ctc-btn">
+                        Send Message <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="ctc-info rv">
+                <h3>Contact Information</h3>
+                <p class="ctc-sub">Reach out to us directly or fill the form and we'll respond within 24 hours.</p>
+
+                <div class="ctc-items">
+                    <div class="ctc-item">
+                        <div class="ctc-ico"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <strong>Phone</strong>
+                            <a href="tel:+9779820142449">+977-9820142449</a>
+                        </div>
+                    </div>
+                    <div class="ctc-item">
+                        <div class="ctc-ico"><i class="fab fa-whatsapp"></i></div>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <a href="https://wa.me/9779820142449" target="_blank" rel="noopener">Chat with us</a>
+                        </div>
+                    </div>
+                    <div class="ctc-item">
+                        <div class="ctc-ico"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <strong>Email</strong>
+                            <a href="mailto:sales@nexgenbuildtech.com">sales@nexgenbuildtech.com</a>
+                        </div>
+                    </div>
+                    <div class="ctc-item">
+                        <div class="ctc-ico"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <strong>Address</strong>
+                            <span>Nepalgunj, Banke</span>
+                        </div>
+                    </div>
+                    <div class="ctc-item">
+                        <div class="ctc-ico"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <strong>Working Hours</strong>
+                            <span>Sun – Fri: 9:00 AM – 6:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ctc-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/9779820142449" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
+
+<!-- Product Quick View Modal -->
+<div id="pmOverlay" class="pm-overlay" role="dialog" aria-modal="true" aria-label="Product details">
+    <div class="pm-box">
+        <button class="pm-close" aria-label="Close">&times;</button>
+        <div class="pm-body">
+            <div class="pm-img-wrap">
+                <img id="pmImg" src="" alt="">
+                <span id="pmBadge" class="pbdg" style="display:none;"></span>
+            </div>
+            <div class="pm-info">
+                <div class="pm-cat" id="pmCat"></div>
+                <h2 id="pmName"></h2>
+                <div id="pmStars" class="prat"></div>
+                <div class="pm-price-row">
+                    <span id="pmPrice" class="pm-price"></span>
+                    <span id="pmOldPrice" class="pm-old-price"></span>
+                </div>
+                <p id="pmDesc" class="pm-desc"></p>
+                <div id="pmFeatures" class="pm-features"></div>
+                <div id="pmMeta" class="pm-meta"></div>
+                <a href="#contact" class="btn btn-p pm-cta" id="pmCta">Get a Quote <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

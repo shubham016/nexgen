@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php artisan *)",
+      "Bash(C:/xampp/mysql/bin/mysql.exe *)",
+      "Read(//c/xampp/mysql/bin/**)",
+      "PowerShell(& \"C:\\\\xampp\\\\mysql\\\\bin\\\\aria_chk.exe\" --safe-recover --force --verbose \"C:\\\\xampp\\\\mysql\\\\data\\\\mysql\\\\global_priv\" 2>&1)",
+      "PowerShell($proc = Start-Process -FilePath \"C:\\\\xampp\\\\mysql\\\\bin\\\\mysqld.exe\" -ArgumentList \"--defaults-file=C:\\\\xampp\\\\mysql\\\\bin\\\\my.ini\",\"--bootstrap\",\"--user=root\" -RedirectStandardInput \"C:\\\\xampp\\\\tmp\\\\bootstrap_fix.sql\" -RedirectStandardOutput \"C:\\\\xampp\\\\tmp\\\\bootstrap_out.txt\" -RedirectStandardError \"C:\\\\xampp\\\\tmp\\\\bootstrap_err.txt\" -Wait -PassThru; Write-Host \"Exit code: $\\($proc.ExitCode\\)\"; Get-Content \"C:\\\\xampp\\\\tmp\\\\bootstrap_err.txt\" | Select-Object -Last 10)",
+      "Bash(\"C:/xampp/mysql/bin/aria_chk.exe\" --safe-recover --force \"mysql/db\")",
+      "Bash(cp \"C:/xampp/mysql/data/mysql/db.MAD\" \"C:/xampp/mysql/data/mysql/db.MAD.bak\")",
+      "Bash(cp \"C:/xampp/mysql/data/mysql/db.MAI\" \"C:/xampp/mysql/data/mysql/db.MAI.bak\")",
+      "Bash(rm \"C:/xampp/mysql/data/mysql/db.MAD\")",
+      "Bash(rm \"C:/xampp/mysql/data/mysql/db.MAI\")",
+      "PowerShell(netstat *)"
+    ]
+  }
+}

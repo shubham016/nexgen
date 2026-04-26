@@ -19,7 +19,6 @@
 <body>
     <!-- Mobile Navigation -->
     <div class="mobn" id="mobn">
-        <button class="clb" onclick="document.getElementById('mobn').classList.remove('open')">&times;</button>
         <a href="/" onclick="document.getElementById('mobn').classList.remove('open')">Home</a>
         <a href="/about" onclick="document.getElementById('mobn').classList.remove('open')">About</a>
         <a href="/services" onclick="document.getElementById('mobn').classList.remove('open')">Services</a>
