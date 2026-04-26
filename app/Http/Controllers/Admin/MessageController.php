@@ -23,6 +23,12 @@ class MessageController extends Controller
         return view('admin.messages.show', compact('message'));
     }
 
+    public function markAllRead()
+    {
+        ContactMessage::where('status', 'new')->update(['status' => 'read']);
+        return back()->with('success', 'All messages marked as read.');
+    }
+
     public function destroy(ContactMessage $message)
     {
         $message->delete();

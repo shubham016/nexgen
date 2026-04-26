@@ -37,7 +37,15 @@
                     <div class="px-3 py-2 border-bottom d-flex justify-content-between align-items-center">
                         <span class="fw-semibold small">Notifications</span>
                         @if($notifCount > 0)
-                            <span class="badge bg-danger">{{ $notifCount }} new</span>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="badge bg-danger">{{ $notifCount }} new</span>
+                                <form method="POST" action="{{ route('admin.messages.markAllRead') }}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-link text-muted p-0" style="font-size:11px;" title="Mark all as read">
+                                        <i class="ti ti-checks"></i> Mark all read
+                                    </button>
+                                </form>
+                            </div>
                         @endif
                     </div>
                     <ul class="list-unstyled p-0 m-0" style="max-height: 320px; overflow-y: auto;">

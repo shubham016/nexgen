@@ -204,6 +204,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(
     // Messages (Contact Enquiries)
     Route::prefix('messages')->name('messages.')->group(function () {
         Route::get('/',              [MessageController::class, 'index'])->name('index');
+        Route::post('/mark-all-read',[MessageController::class, 'markAllRead'])->name('markAllRead');
         Route::get('/{message}',     [MessageController::class, 'show'])->name('show');
         Route::delete('/{message}',  [MessageController::class, 'destroy'])->name('destroy');
     });

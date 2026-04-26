@@ -11,7 +11,15 @@
                 <p class="mb-0">Enquiries submitted via the website contact form</p>
             </div>
             @if($newCount > 0)
-                <span class="badge bg-danger fs-6 px-3 py-2">{{ $newCount }} New</span>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-danger fs-6 px-3 py-2">{{ $newCount }} New</span>
+                    <form method="POST" action="{{ route('admin.messages.markAllRead') }}">
+                        @csrf
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">
+                            <i class="ti ti-checks me-1"></i>Mark all as read
+                        </button>
+                    </form>
+                </div>
             @endif
         </div>
     </div>
