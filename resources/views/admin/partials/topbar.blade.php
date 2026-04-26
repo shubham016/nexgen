@@ -26,12 +26,10 @@
                         <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
                         <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
                     </svg>
-                    @if($notifCount > 0)
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-2 ms-n2">
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-2 ms-n2 notif-badge {{ $notifCount === 0 ? 'd-none' : '' }}">
                             {{ $notifCount > 9 ? '9+' : $notifCount }}
                             <span class="visually-hidden">unread messages</span>
                         </span>
-                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-md p-0" style="min-width: 320px;">
                     <div class="px-3 py-2 border-bottom d-flex justify-content-between align-items-center">
@@ -48,7 +46,7 @@
                             </div>
                         @endif
                     </div>
-                    <ul class="list-unstyled p-0 m-0" style="max-height: 320px; overflow-y: auto;">
+                    <ul class="list-unstyled p-0 m-0" id="notifList" style="max-height: 320px; overflow-y: auto;">
                         @forelse($notifications as $notif)
                         <li>
                             <a href="{{ route('admin.messages.show', $notif) }}" class="d-flex gap-3 px-3 py-2 border-bottom text-decoration-none text-dark {{ $notif->status === 'new' ? 'bg-primary bg-opacity-10' : '' }}">

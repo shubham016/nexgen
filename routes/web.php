@@ -201,6 +201,15 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(
         return $pdf->download('nexgen-products-' . now()->format('Y-m-d') . '.pdf');
     })->name('reports.pdf');
 
+    // Notifications polling endpoint
+    Route::get('/notifications/poll', function () {
+        $count = \App\Models\ContactMessage::where('status', 'new')->count();
+        $notifications = \App\Models\ContactMessage::where('status', 'new')
+            ->latest()->take(5)
+            ->get(['id', 'name', 'subject', 'message', 'created_at']);
+        return response()->json(compact('count', 'notifications'));
+    })->name('notifications.poll');
+
     // Messages (Contact Enquiries)
     Route::prefix('messages')->name('messages.')->group(function () {
         Route::get('/',              [MessageController::class, 'index'])->name('index');

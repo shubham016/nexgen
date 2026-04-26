@@ -27,5 +27,57 @@
 
     <script type="module" src="{{ asset('admin-assets/js/main.js') }}"></script>
     @stack('scripts')
+
+    <script>
+    (function () {
+        const pollUrl = '{{ route('admin.notifications.poll') }}';
+        let lastCount = {{ \App\Models\ContactMessage::where('status','new')->count() }};
+
+        function updateBadge(count) {
+            const badges = document.querySelectorAll('.notif-badge');
+            badges.forEach(b => {
+                if (count > 0) {
+                    b.textContent = count > 9 ? '9+' : count;
+                    b.classList.remove('d-none');
+                } else {
+                    b.classList.add('d-none');
+                }
+            });
+        }
+
+        function poll() {
+            fetch(pollUrl)
+                .then(r => r.json())
+                .then(data => {
+                    if (data.count !== lastCount) {
+                        lastCount = data.count;
+                        updateBadge(data.count);
+                        // Reload dropdown list if new messages arrived
+                        if (data.count > 0) {
+                            const list = document.getElementById('notifList');
+                            if (list) {
+                                list.innerHTML = data.notifications.map(n => `
+                                    <li>
+                                        <a href="/admin/messages/${n.id}" class="d-flex gap-3 px-3 py-2 border-bottom text-decoration-none text-dark bg-primary bg-opacity-10">
+                                            <div class="icon-shape icon-sm bg-primary bg-opacity-10 text-primary rounded-circle flex-shrink-0 mt-1">
+                                                <i class="ti ti-mail"></i>
+                                            </div>
+                                            <div class="flex-grow-1 small overflow-hidden">
+                                                <div class="fw-semibold text-truncate">${n.name}</div>
+                                                <div class="text-muted text-truncate">${n.subject || n.message}</div>
+                                            </div>
+                                            <span class="badge bg-danger align-self-start mt-1" style="font-size:9px;">NEW</span>
+                                        </a>
+                                    </li>`).join('');
+                            }
+                        }
+                    }
+                })
+                .catch(() => {});
+        }
+
+        setInterval(poll, 30000);
+    })();
+    </script>
 </body>
 </html>
