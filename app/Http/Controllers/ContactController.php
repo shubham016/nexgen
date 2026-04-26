@@ -21,11 +21,15 @@ class ContactController extends Controller
 
         $message = ContactMessage::create($validated);
 
-        try {
-            Mail::to('sales@nexgenbuildtech.com')->send(new ContactNotificationMail($message));
-        } catch (\Exception $e) {
-            // Mail failure should not block the user's submission
-        }
+        // Send mail after response is returned to the browser
+        $contactMessage = $message;
+        app()->terminating(function () use ($contactMessage) {
+            try {
+                Mail::to('sales@nexgenbuildtech.com')->send(new ContactNotificationMail($contactMessage));
+            } catch (\Exception $e) {
+                //
+            }
+        });
 
         return back()->with('contact_success', 'Thank you! Your message has been received. We\'ll get back to you shortly.');
     }
